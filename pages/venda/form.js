@@ -1,5 +1,5 @@
 import Cabecalho from '@/components/Cabecalho'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Button, Container, Form } from 'react-bootstrap'
 import vendaValidator from '@/validators/vendaValidator'
@@ -11,6 +11,12 @@ const FormVenda = () => {
 
     const { push } = useRouter()
     const { register, handleSubmit, formState: { errors }, setValue } = useForm()
+    const [tipos, setTipos] = useState([])
+
+
+    useEffect(() => {
+        setTipos(JSON.parse(window.localStorage.getItem('tipos')) || [])
+    }, [])
 
     function salvar(dados) {
         const venda = JSON.parse(window.localStorage.getItem('venda')) || []
@@ -36,13 +42,14 @@ const FormVenda = () => {
             <Container>
 
                 <Form>
-                    <Form.Group className="mb-3" controlId="tipo">
-                        <Form.Label> Você está vendendo:</Form.Label>
-                        <Form.Select aria-label="Default select example" isInvalid={errors.tipo} {...register('tipo', vendaValidator.preferencia)} >
-                            <option value="Apartamento">Um apartamento</option>
-                            <option value="casa">Uma casa</option>
+                <Form.Group className="mb-3" controlId="tipo">
+                        <Form.Label> Você quer vender:</Form.Label>
+                        <Form.Select aria-label="Default select example" isInvalid={errors.tipo} {...register('tipo', vendaValidator.tipo)} >
+                            {tipos.map((item) => (
+                                <option> {item.tipo} </option>
+                            ))}
                         </Form.Select>
-                    </Form.Group>
+                </Form.Group>
 
                     <br></br>
 

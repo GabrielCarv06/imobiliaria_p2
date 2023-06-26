@@ -12,6 +12,7 @@ const Cabecalho = () => {
                 <Container>
                     <Navbar.Brand href="/" className="me-5">Peres Imobiliárias</Navbar.Brand>
                     <Nav className="d-flex justify-content-center">
+                        <Nav.Link variant="light" href="/tipos" className="me-3">Tipos de imóveis</Nav.Link>
                         <Nav.Link variant="light" href="/comprar" className="me-3">Comprar</Nav.Link>
                         <Nav.Link variant="light" href="/alugar" className="me-3">Alugar</Nav.Link>
                         <Nav.Link variant="light" href="/venda" className="me-3">Vender</Nav.Link>

@@ -29,7 +29,7 @@ const Venda = () => {
 const Map = dynamic(
     () => import('@/components/Mapa'), 
     { 
-      loading: () => <p>A map is loading</p>,
+      loading: () => <p>Mapa carregando</p>,
       ssr: false 
     }
   )
